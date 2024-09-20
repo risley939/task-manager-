@@ -1,0 +1,22 @@
+
+
+def task_manager():
+    try:
+        with open("tasks.txt", "r") as file:
+            tasks = file.readlines()
+    except FileNotFoundError:
+        tasks = []
+
+    print("Current tasks:")
+    for task in tasks:
+        print(task.strip())
+
+    new_task = input("Enter a new task: ")
+    tasks.append(new_task + '\n')
+
+    with open("tasks.txt", "a") as file:
+        file.write(new_task + '\n')
+
+    print("Task added successfully.")
+
+task_manager()
